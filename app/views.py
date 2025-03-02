@@ -22,19 +22,19 @@ def about():
 def contact():
     """Render the website's contact page."""
     form = ContactForm()
-    # Check if a POST request is made
     if request.method == 'POST':
         # Validate form entries
         if form.validate_on_submit():
             # Get email fields
-            from_name = request.form['name']
-            from_email = request.form['email']
+            name = request.form['name']
+            email = request.form['email']
             subject = request.form['subject']
-            msg = request.form['message']
-            message = Message(subject, sender=(from_name, from_email), recipients=["jespaiand@gmail.com"])
-            message.body = msg
-            # Send email message
-            mail.send(message)
+            msg_body = request.form['message']
+            msg = Message(subject,
+                          sender=(name, email),
+                          recipients=["jespaiand@gmail.com"])
+            msg.body = msg_body
+            mail.send(msg)
             # confirmation message
             flash(u'Your message has been sent.', 'success')
             # Redirect user to homepage
@@ -46,7 +46,6 @@ def contact():
 ###
 # The functions below should be applicable to all Flask apps.
 ###
-
 
 # Flash errors from the form if validation fails
 def flash_errors(form):

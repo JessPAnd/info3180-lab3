@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h1></h1>
-    <form method="post" action="{{ url_for('contact') }}">
-        {{ form.csrf_token }}
-        <div>
-            {{ form.name.label }}
-            {{ form.name }}
-        </div>
-        <div>
-            {{ form.email.label }}
-            {{ form.email }}
-        </div>
-        <div>
-            {{ form.subject.label }}
-            {{ form.subject }}
-        </div>
-        <div>
-            {{ form.message.label }}
-            {{ form.message }}
-        </div>
-        <div>
-            {{ form.submit }}
-        </div>
-    </form>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form method="post" action="{{ url_for('contact') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.subject.label(class="form-label") }}
+                {{ form.subject(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.message.label(class="form-label") }}
+                {{ form.message(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
