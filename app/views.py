@@ -31,7 +31,7 @@ def contact():
         #send email
         msg = Message(subject,
                       sender=(name, email),
-                      recipients=["to@example.com"])
+                      recipients=["jespaiand@gmail.com"])
         msg.body = message
         mail.send(msg)
 

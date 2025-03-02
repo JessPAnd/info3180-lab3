@@ -7,4 +7,4 @@ class ContactForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     subject = StringField('Subject', validators=[DataRequired()])
     message = TextAreaField('Message', validators=[DataRequired()])
-    send = SubmitField('Send')
+    submit = SubmitField('Submit')
