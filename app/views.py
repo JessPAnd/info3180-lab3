@@ -18,7 +18,7 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Jessica Anderson")
 
-@app.route('/contact/', methods=['GET','POST'])
+@app.route('/contact/', methods=['GET', 'POST'])
 def contact():
     """Render the website's contact page."""
     form = ContactForm()
@@ -26,10 +26,10 @@ def contact():
         # Validate form entries
         if form.validate_on_submit():
             # Get email fields
-            name = request.form['name']
-            email = request.form['email']
-            subject = request.form['subject']
-            msg_body = request.form['message']
+            name = form.name.data
+            email = form.email.data
+            subject = form.subject.data
+            msg_body = form.message.data
             msg = Message(subject,
                           sender=(name, email),
                           recipients=["jespaiand@gmail.com"])
@@ -40,7 +40,7 @@ def contact():
             # Redirect user to homepage
             return redirect(url_for('home'))
         else:
-            # Display errors 
+            # Display errors
             flash_errors(form)
     return render_template('contact.html', form=form)
 ###
