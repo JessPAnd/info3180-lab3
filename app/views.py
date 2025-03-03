@@ -1,8 +1,8 @@
-from app import app
 from flask import render_template, request, redirect, url_for, flash
-from app.forms import ContactForm
-from app import mail 
 from flask_mail import Message
+from app import app, mail
+from .forms import ContactForm
+
 ###
 # Routing for your application.
 ###
@@ -43,6 +43,7 @@ def contact():
             # Display errors
             flash_errors(form)
     return render_template('contact.html', form=form)
+
 ###
 # The functions below should be applicable to all Flask apps.
 ###
